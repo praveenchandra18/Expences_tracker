@@ -76,18 +76,21 @@ void expences::expense_month()
 
     while(!out.eof())
     {
-        out>>date.year;
-        out>>date.month;
-        out>>date.day;
-        out>>temp_amount;
+        out>>date.year>>date.month>>date.day>>temp_amount;
         getline(out,line);
         if(date.year==year && date.month==month)
         {
             cout<<date<<" "<<temp_amount<<line<<endl;
+            total+=temp_amount;
         }
     }
-
-
+    if(amount==0)
+    {
+        cout<<"No expence records found in this month"<<endl;
+    }
+    else{
+        cout<<"Total amount spent is "<<total<<endl;
+    }
     out.close();
 }
 
